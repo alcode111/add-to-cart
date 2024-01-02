@@ -1,1 +1,1 @@
-# add-to-cart
+In this project, we will build an app called "Add to Cart" that will rely on a real life database: Firebase. Upon clicking on the "Add(AJOUTER)" button, a user will be able to add shopping items so that they can remember them when they have to go run some errands.
