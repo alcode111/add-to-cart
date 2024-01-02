@@ -22,6 +22,29 @@ addButton.addEventListener('click', function() {
     clearInputFieldEl()
 })
 
+onValue(shoppingItemsInDB, function(snapshot) {
+    let shoppingItemsArray = Object.entries(snapshot.val())
+
+    cleanShoppingItemsUlEl()
+
+    for(let i = 0; i < shoppingItemsArray.length; i++) {
+        let currentItemID = shoppingItemsArray[i][0]
+        let currentItemValue = shoppingItemsArray[i][1]
+
+        appendShoppingItemsToShoppingItemsUlEl(currentItemValue)
+    }
+})
+
+function appendShoppingItemsToShoppingItemsUlEl(itemValue, itemID) {
+    let newLi = document.createElement("li")
+    newLi.textContent = itemValue
+    shoppingItemsUlEl.append(newLi)
+}
+
+function cleanShoppingItemsUlEl() {
+    shoppingItemsUlEl.innerHTML = ""
+}
+
 function clearInputFieldEl() {
     inputFieldEl.value = ""
 }
