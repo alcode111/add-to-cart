@@ -15,11 +15,15 @@ const addButton = document.getElementById("add-button")
 const shoppingItemsUlEl = document.getElementById("shopping-items")
 
 addButton.addEventListener('click', function() {
-    let userInput = inputFieldEl.value
+    let userInput = inputFieldEl.value.trim()
 
-    push(shoppingItemsInDB, userInput)
-
-    clearInputFieldEl()
+    if (userInput !== "") {
+        push(shoppingItemsInDB, userInput)
+        clearInputFieldEl()
+        
+    } else {
+        alert("Veuillez entrer un article valide")
+    }
 })
 
 onValue(shoppingItemsInDB, function(snapshot) {
