@@ -23,15 +23,20 @@ addButton.addEventListener('click', function() {
 })
 
 onValue(shoppingItemsInDB, function(snapshot) {
-    let shoppingItemsArray = Object.entries(snapshot.val())
+    let shoppingItemsArray = snapshot.val() ? Object.entries(snapshot.val()) : [{key: "noItems", value: "Vous n'avez pas d'articles... pour l'instant"}]
 
-    cleanShoppingItemsUlEl()
+    clearShoppingItemsUlEl()
 
     for(let i = 0; i < shoppingItemsArray.length; i++) {
-        let currentItemID = shoppingItemsArray[i][0]
-        let currentItemValue = shoppingItemsArray[i][1]
+        let currentItem = shoppingItemsArray[i]
+        if (currentItem.key === "noItems") {
+            shoppingItemsUlEl.innerHTML = `<i>${currentItem.value}</i>`
+        } else {
+            let currentItemID = shoppingItemsArray[i][0]
+            let currentItemValue = shoppingItemsArray[i][1]
 
-        appendShoppingItemsToShoppingItemsUlEl(currentItemValue, currentItemID)
+            appendShoppingItemsToShoppingItemsUlEl(currentItemValue, currentItemID)
+        }
     }
 })
 
@@ -46,7 +51,7 @@ function appendShoppingItemsToShoppingItemsUlEl(itemValue, itemID) {
     })
 }
 
-function cleanShoppingItemsUlEl() {
+function clearShoppingItemsUlEl() {
     shoppingItemsUlEl.innerHTML = ""
 }
 
