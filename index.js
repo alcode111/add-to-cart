@@ -31,7 +31,7 @@ onValue(shoppingItemsInDB, function(snapshot) {
         let currentItemID = shoppingItemsArray[i][0]
         let currentItemValue = shoppingItemsArray[i][1]
 
-        appendShoppingItemsToShoppingItemsUlEl(currentItemValue)
+        appendShoppingItemsToShoppingItemsUlEl(currentItemValue, currentItemID)
     }
 })
 
@@ -39,6 +39,11 @@ function appendShoppingItemsToShoppingItemsUlEl(itemValue, itemID) {
     let newLi = document.createElement("li")
     newLi.textContent = itemValue
     shoppingItemsUlEl.append(newLi)
+
+    newLi.addEventListener('click', function() {
+        let shoppingItemExactLocationInDB = ref(database, `shoppingItems/${itemID}`)
+        remove(shoppingItemExactLocationInDB)
+    })
 }
 
 function cleanShoppingItemsUlEl() {
