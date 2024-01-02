@@ -42,3 +42,30 @@ button {
     background: #ea1c1c;
     color: white;
 }
+
+button:hover {
+    cursor: pointer;
+    background: #432000;
+}
+
+ul {
+    list-style-type: none;
+    padding-left: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+ul li {
+    background: #FFFDF8;
+    flex-grow: 1;
+    font-size: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+ul li:hover {
+    cursor: pointer;
+    background: #F6E4BD;
+}
