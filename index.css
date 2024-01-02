@@ -50,7 +50,7 @@ button:hover {
 
 ul {
     list-style-type: none;
-    padding-left: none;
+    padding-left: 0;
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
