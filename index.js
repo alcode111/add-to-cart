@@ -13,3 +13,15 @@ const shoppingItemsInDB = ref(database, "shoppingItems")
 const inputFieldEl = document.getElementById("input-field")
 const addButton = document.getElementById("add-button")
 const shoppingItemsUlEl = document.getElementById("shopping-items")
+
+addButton.addEventListener('click', function() {
+    let userInput = inputFieldEl.value
+
+    push(shoppingItemsInDB, userInput)
+
+    clearInputFieldEl()
+})
+
+function clearInputFieldEl() {
+    inputFieldEl.value = ""
+}
